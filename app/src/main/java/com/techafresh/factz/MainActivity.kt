@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("MYTAG" , "Implicit logical operators")
 
-        viewModel.getRandomFacts("10")
+        viewModel.getRandomFacts("100")
 
         viewModel.randomFactsLiveData.observe(this , Observer {
             Log.d("MYTAG" , "jjfjfjfjfjfjfjfjfjfjfj")
             try {
                 Log.d("MYTAG" , "Data : ${it.body()!!.toList()}")
-                binding.rtY.text = "it.body()!![1].fact"
+                viewModel.saveRandomFacts(it.body()!!)
             }catch (ex : Exception){
                 Log.d("MYTAG" , "Exception : ${ex.message}")
             }

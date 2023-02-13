@@ -1,6 +1,7 @@
 package com.techafresh.factz.presentation.hilt
 
 import com.techafresh.factz.data.dataSourceImpl.repositoryImpl.RepositoryImpl
+import com.techafresh.factz.data.dataSources.local.LocalDataSource
 import com.techafresh.factz.data.dataSources.remote.RemoteDataSource
 import com.techafresh.factz.domain.repository.Repository
 import dagger.Module
@@ -15,7 +16,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideRepository(remoteDataSource: RemoteDataSource) : Repository{
-        return RepositoryImpl(remoteDataSource)
+    fun provideRepository(remoteDataSource: RemoteDataSource , localDataSource: LocalDataSource) : Repository{
+        return RepositoryImpl(remoteDataSource , localDataSource)
     }
 }
